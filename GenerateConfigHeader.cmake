@@ -42,6 +42,12 @@ check_include_files(zlib.h HAVE_ZLIB_H)
 # https://www.gnu.org/software/autoconf/manual/autoconf-2.67/html_node/Particular-Headers.html
 check_include_files("stdlib.h;stdarg.h;string.h;float.h" STDC_HEADERS)
 
+# HAVE_PTHREAD_H is set to 1 only if the WITH_THREADS option is enabled
+if(NOT LIBXML2_WITH_THREADS)
+  set(HAVE_PTHREAD_H "" CACHE INTERNAL "Have include pthread.h")
+endif()
+
+
 # Check if symbols are available
 include(CheckSymbolExists)
 check_symbol_exists(dlopen dlfcn.h HAVE_DLOPEN)
