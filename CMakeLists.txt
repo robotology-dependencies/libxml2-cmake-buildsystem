@@ -205,8 +205,13 @@ if(NOT libxml2upstream_POPULATED)
           PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libxml2/libxml")
 
   # Note that we do not install CMake imported targets, to remain compatible with
-  # the libxml2 compiled by autotools: the generated libraries are expected to te
+  # the libxml2 compiled by autotools: the generated libraries are expected to be
   # found by LibXml2.cmake available in cmake
+  # However, for compatibility with the autotools build system we generate and install
+  # the libxml2-config.cmake file
+  configure_file(${libxml2upstream_SOURCE_DIR}/libxml2-config.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/libxml2-config.cmake)
+  install(FILE ${CMAKE_CURRENT_BINARY_DIR}/libxml2-config.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/libxml2")
+
 
   # Add uninstall target
   include(AddUninstallTarget)
