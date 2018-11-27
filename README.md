@@ -9,7 +9,7 @@ LibXml2 with a CMake-based build system.
 The project can be download and installed as any CMake project, for example on `*nix` systems
 the library can be installed in the `<prefix>` directory with the following commands:
 ~~~
-git clone https://github.com/traversaro/libxml2-cmake
+git clone https://github.com/robotology-dependencies/libxml2-cmake-buildsystem
 cd libxml2-cmake
 cmake -DCMAKE_INSTALL_PREFIX=<prefix> ..
 cmake --build . --target INSTALL
