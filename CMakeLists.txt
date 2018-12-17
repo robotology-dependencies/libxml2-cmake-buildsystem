@@ -210,7 +210,7 @@ if(NOT libxml2upstream_POPULATED)
   # However, for compatibility with the autotools build system we generate and install
   # the libxml2-config.cmake file
   configure_file(${libxml2upstream_SOURCE_DIR}/libxml2-config.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/libxml2-config.cmake)
-  install(FILE ${CMAKE_CURRENT_BINARY_DIR}/libxml2-config.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/libxml2")
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libxml2-config.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/libxml2")
 
 
   # Add uninstall target
