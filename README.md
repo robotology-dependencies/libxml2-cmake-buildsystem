@@ -15,7 +15,7 @@ cmake -DCMAKE_INSTALL_PREFIX=<prefix> ..
 cmake --build . --target INSTALL
 ~~~
 
-Once you instaalled the library, it should be possible to find it using the [`FindLibXml2.cmake`](https://cmake.org/cmake/help/latest/module/FindLibXml2.html) module available in CMake.
+Once you installed the library, it should be possible to find it using the [`FindLibXml2.cmake`](https://cmake.org/cmake/help/latest/module/FindLibXml2.html) module available in CMake.
 If you specified a non-standard `<prefix>`, you may need to also add `<prefix>` to [`CMAKE_PREFIX_PATH`](https://cmake.org/cmake/help/latest/variable/CMAKE_PREFIX_PATH.html).
 
 For more details on how to configure, compile and install a CMake project, see [CGold section on Generate native tool files](https://cgold.readthedocs.io/en/latest/first-step/generate-native-tool.html).
