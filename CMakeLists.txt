@@ -80,6 +80,7 @@ if(NOT libxml2upstream_POPULATED)
   libxml2_option(WITH_XINCLUDE "add the XInclude support" ON)
   libxml2_option(WITH_XPATH "add the XPATH support" ON)
   libxml2_option(WITH_XPTR "add the XPointer support" ON)
+  # TODO() Encode that XInclude and xptr support depends on Xpath
   libxml2_option(WITH_MODULES "add the dynamic modules support" ON)
 
   # Option on dependencies
@@ -163,8 +164,25 @@ if(NOT libxml2upstream_POPULATED)
            ${libxml2upstream_SOURCE_DIR}/schematron.c
            ${libxml2upstream_SOURCE_DIR}/xzlib.c)
 
+  if(NOT WITH_XPATH)
+    list(REMOVE_ITEM xml2_public_headers ${libxml2upstream_SOURCE_DIR}/include/libxml/xpath.h)
+    list(REMOVE_ITEM srcs ${libxml2upstream_SOURCE_DIR}/xpath.c)
+  endif()
+
+  if(NOT WITH_XPTR)
+    list(REMOVE_ITEM xml2_public_headers ${libxml2upstream_SOURCE_DIR}/include/libxml/xpointer.h)
+    list(REMOVE_ITEM srcs ${libxml2upstream_SOURCE_DIR}/xpointer.c)
+  endif()
+
+  if(NOT WITH_XINCLUDE)
+    list(REMOVE_ITEM xml2_public_headers ${libxml2upstream_SOURCE_DIR}/include/libxml/xinclude.h)
+    list(REMOVE_ITEM srcs ${libxml2upstream_SOURCE_DIR}/xinclude.c)
+  endif()
+
+
   add_library(xml2 ${srcs})
-  target_include_directories(xml2 PRIVATE ${libxml2upstream_SOURCE_DIR}/include ${CMAKE_CURRENT_BINARY_DIR})
+  target_include_directories(xml2 PUBLIC $<BUILD_INTERFACE:${libxml2upstream_SOURCE_DIR}/include>
+                                         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
   if(WITH_THREADS)
     # TODO(check logic)
