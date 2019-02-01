@@ -181,6 +181,11 @@ if(NOT libxml2upstream_POPULATED)
 
 
   add_library(xml2 ${srcs})
+
+  # Add alias that matches the target exported in FindLibXml2.cmake, to simplify the usage of the library
+  # with the FetchContent CMake module
+  add_library(LibXml2::LibXml2 ALIAS xml2)
+
   target_include_directories(xml2 PUBLIC $<BUILD_INTERFACE:${libxml2upstream_SOURCE_DIR}/include>
                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
