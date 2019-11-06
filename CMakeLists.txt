@@ -16,7 +16,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 include(FetchContent)
 FetchContent_Declare(libxml2upstream
                      GIT_REPOSITORY https://gitlab.gnome.org/GNOME/libxml2.git
-                     GIT_TAG        v2.9.8)
+                     GIT_TAG        v2.9.9)
 
 FetchContent_GetProperties(libxml2upstream)
 if(NOT libxml2upstream_POPULATED)
